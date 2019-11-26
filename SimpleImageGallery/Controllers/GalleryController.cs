@@ -68,7 +68,7 @@ namespace SimpleImageGallery.Controllers
                 SearchQuery = ""
             };
 
-            return View();
+            return View(model);
         }
     }
 }
