@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SimpleImageGallery.Data;
 
 namespace SimpleImageGallery.Data.Migrations
 {
     [DbContext(typeof(SimpleImageGalleryDbContext))]
-    partial class SimpleImageGalleryDbContextModelSnapshot : ModelSnapshot
+    [Migration("20191126120652_Change data type for ImageTag")]
+    partial class ChangedatatypeforImageTag
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
