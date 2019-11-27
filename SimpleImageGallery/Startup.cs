@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SimpleImageGallery.Data;
+using SimpleImageGallery.Services;
 
 namespace SimpleImageGallery
 {
@@ -29,6 +30,7 @@ namespace SimpleImageGallery
                 options.UseSqlServer(Configuration
                 .GetConnectionString("DefaultConnection")));
             services.AddControllersWithViews();
+            services.AddScoped<IImage, ImageService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
