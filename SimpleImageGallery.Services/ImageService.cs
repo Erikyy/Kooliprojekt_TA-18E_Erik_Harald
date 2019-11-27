@@ -24,6 +24,7 @@ namespace SimpleImageGallery.Services
         {
             return _ctx.GalleryImages.Find(id);
         }
+
         public IEnumerable<GalleryImage> GetWithTag(string tag)
         {
             return GetAll().Where(img

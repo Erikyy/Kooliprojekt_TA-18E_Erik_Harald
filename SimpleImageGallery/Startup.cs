@@ -29,8 +29,8 @@ namespace SimpleImageGallery
             services.AddDbContext<SimpleImageGalleryDbContext>(options =>
                 options.UseSqlServer(Configuration
                 .GetConnectionString("DefaultConnection")));
-            services.AddControllersWithViews();
             services.AddScoped<IImage, ImageService>();
+            services.AddControllersWithViews();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,7 +57,7 @@ namespace SimpleImageGallery
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Gallery}/{action=Index}/{id?}");
             });
         }
     }
