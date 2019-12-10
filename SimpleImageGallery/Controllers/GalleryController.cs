@@ -26,6 +26,23 @@ namespace SimpleImageGallery.Controllers
             return View(model);
         }
 
+        public IActionResult Large()
+        {
+            return View(model);
+        }
+        public IActionResult Table()
+        {
+            var imageList = _imageService.GetAll();
+
+            var model = new Gall()
+            {
+                Images = imageList,
+                SearchQuery = ""
+            };
+
+            return View(model);
+        }
+
         public IActionResult Detail(int id)
         {
             var image = _imageService.GetById(id);

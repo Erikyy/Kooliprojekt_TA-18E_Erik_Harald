@@ -1,0 +1,17 @@
+﻿@model SimpleImageGallery.Models.GalleryIndexModel
+@{
+    ViewData["Title"] = "Large View";
+}
+
+<div class="row">
+    <div class="col-md-3 background"></div>
+    <main class="col-md-6 images">
+        @foreach (var image in Model.Images)
+        {
+            <a href="@image.Url">
+                <img src="@image.Url" />
+            </a>
+        }
+    </main>
+    <div class="col-md-3 background"></div>
+</div>
