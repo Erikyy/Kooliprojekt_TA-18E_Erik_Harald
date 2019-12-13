@@ -13,7 +13,7 @@ namespace SimpleImageGallery.Services
     public class ImageService : IImage
     {
         private readonly SimpleImageGalleryDbContext _ctx;
-        public ImageService(SimpleImageGalleryDbContext ctx) 
+        public ImageService(SimpleImageGalleryDbContext ctx)
         {
             _ctx = ctx;
         }
@@ -63,6 +63,13 @@ namespace SimpleImageGallery.Services
             {
                 Description = tag
             }).ToList();
+        }
+
+        public IEnumerable<GalleryImage> SearchImage(string searchQuery)
+        {
+            searchQuery = searchQuery.ToLower();
+            return GetAll().Where(img =>
+                            img.Title.ToLower().Contains(searchQuery));
         }
     }
 }

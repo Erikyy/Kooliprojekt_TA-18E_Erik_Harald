@@ -1,6 +1,4 @@
-﻿@model SimpleImageGallery.Models.GalleryIndexModel
-
-<div class="container body-content">
+﻿@*<div class="container body-content">
     <div class="row gallery-content">
         @foreach (var image in Model.Images)
         {
@@ -11,5 +9,25 @@
         </div>
         }
     </div>
-</div> 
+</div>*@
 
+@{
+    ViewData["Title"] = "Column View";
+}
+
+<main class="container-fluid">
+    <div class="row">
+        <div class="col-lg-2 background"></div>
+        <main class="col-lg-8 images">
+            <div class="justified-gallery">
+                @foreach (var image in Model.Images)
+                {
+                    <a href="@image.Url">
+                        <img src="@image.Url" />
+                    </a>
+                }
+            </div>
+        </main>
+        <div class="col-lg-2 background"></div>
+    </div>
+</main>

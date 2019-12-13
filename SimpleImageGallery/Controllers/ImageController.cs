@@ -27,7 +27,7 @@ namespace SimpleImageGallery.Controllers
 
         public IActionResult Upload()
         {
-            var model = new UploadImageModel();
+            var model = new GalleryIndexModel();
             return View(model);
         }
 

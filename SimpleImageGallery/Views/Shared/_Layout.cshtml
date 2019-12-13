@@ -1,39 +1,78 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - SimpleImageGallery</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
-</head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Gallery" asp-action="Index">SimpleImageGallery</a>
-                <ul class="navbar-nav flex-grow-1">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Image" asp-action="Upload">Upload</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+﻿@model SimpleImageGallery.Models.GalleryIndexModel
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2019 - SimpleImageGallery - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial  -scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.12/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.7.0/css/justifiedGallery.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+
+    <title>@ViewData["Title"] - SimpleImageGallery</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-light bg-light d-block d-md-flex navbar-expand">
+        <a class="navbar-brand" href="#">
+            <img src="~/Images/logo.png">
+        </a>
+        <form asp-action="Index" method="get" class="form-inline my-2 ml-auto">
+            <input asp-for="SearchQuery" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" >
+            <button class="search btn btn-outline-success mt-2 my-sm-0 mr-2" type="submit">Search</button>
+        </form>
+        <div class="dropdown">
+            <button class="btn dropdown-toggle text-dark" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="material-icons md-36 align-middle">person</i></button>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Logout <i class="material-icons md-18 align-middle text-danger">exit_to_app</i></a>
+            </div>
+        </div>
+    </nav>
+    <div class="toolbar bg-dark sticky-top">
+        <div class="container-fluid">
+            @if (IsSectionDefined("Toolbar"))
+            {
+                @RenderSection("Toolbar", required: false)
+            }
+            else
+            {
+
+            }
+            {
+                <a asp-controller="Gallery" asp-action="Table"><i class="material-icons md-light md-inactive md-36">list</i></a>
+                <a asp-controller="Gallery" asp-action="Index"><i class="material-icons md-light md-inactive md-36">view_module</i></a>
+                <a asp-controller="Image" asp-action="Upload"><i class="image-upload float-right material-icons md-light md-inactive md-36">add</i></a>
+            }
+        </div>
+    </div>
+    @RenderBody()
+    <footer class="footer">
+        <div class="container text-center">
+            <span class="text-muted">© 2019 WebGallery</span>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @RenderSection("Scripts", required: false)
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.12/js/lightgallery-all.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.7.0/js/jquery.justifiedGallery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+    <script src="~/js/site.js"></script>
 </body>
+
 </html>
