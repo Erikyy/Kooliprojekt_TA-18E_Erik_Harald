@@ -1,6 +1,8 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using SimpleImageGallery.Data;
+using SimpleImageGallery.Data.Models;
 using SimpleImageGallery.Models;
 
 namespace SimpleImageGallery.Controllers
@@ -13,34 +15,44 @@ namespace SimpleImageGallery.Controllers
             _imageService = imageService;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string searchQuery = "")
         {
-            var imageList = _imageService.GetAll();
+            IEnumerable<GalleryImage> imageList;
+            if(searchQuery != "")
+            {
+                imageList = _imageService.SearchImage(searchQuery);
+            }
+            else
+            {
+                imageList = _imageService.GetAll();
+            }
+
+            if (!imageList.Any())
+            {
+                return View("NoImages");
+            }
 
             var model = new GalleryIndexModel()
             {
                 Images = imageList,
-                SearchQuery = ""
+                SearchQuery = searchQuery
             };
 
-            return View(model);
+            return View(model); 
+        }
+
+        public IActionResult Column() 
+        {
+            return Index();
         }
 
         public IActionResult Large()
         {
-            return View(model);
+            return Index();
         }
         public IActionResult Table()
         {
-            var imageList = _imageService.GetAll();
-
-            var model = new Gall()
-            {
-                Images = imageList,
-                SearchQuery = ""
-            };
-
-            return View(model);
+            return Index();
         }
 
         public IActionResult Detail(int id)

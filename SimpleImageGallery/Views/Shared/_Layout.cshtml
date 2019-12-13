@@ -1,42 +1,4 @@
-﻿@*<!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>@ViewData["Title"] - SimpleImageGallery</title>
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-        <link rel="stylesheet" href="~/css/site.css" />
-    </head>
-    <body>
-        <header>
-            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-                <div class="container">
-                    <a class="navbar-brand" asp-area="" asp-controller="Gallery" asp-action="Index">SimpleImageGallery</a>
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Image" asp-action="Upload">Upload</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </header>
-        <div class="container">
-            <main role="main" class="pb-3">
-                @RenderBody()
-            </main>
-        </div>
-
-        <footer class="border-top footer text-muted">
-            <div class="container">
-                &copy; 2019 - SimpleImageGallery - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-            </div>
-        </footer>
-        <script src="~/lib/jquery/dist/jquery.min.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
-        @RenderSection("Scripts", required: false)
-    </body>
-    </html>*@
+﻿@model SimpleImageGallery.Models.GalleryIndexModel
 
 <!doctype html>
 <html lang="en">
@@ -44,7 +6,7 @@
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial  -scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -62,8 +24,8 @@
         <a class="navbar-brand" href="#">
             <img src="~/Images/logo.png">
         </a>
-        <form class="form-inline my-2 ml-auto">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <form asp-action="Index" method="get" class="form-inline my-2 ml-auto">
+            <input asp-for="SearchQuery" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" >
             <button class="search btn btn-outline-success mt-2 my-sm-0 mr-2" type="submit">Search</button>
         </form>
         <div class="dropdown">
@@ -81,16 +43,16 @@
             }
             else
             {
-                <a href="list_view.html" class="float-left"><i class="material-icons md-light md-inactive md-36">list</i></a>
-                <a href="column_view.html" class="float-left"><i class="material-icons md-light md-inactive md-36">view_module</i></a>
-                <a asp-controller="Gallery" asp-action="Index"><i class="material-icons md-light md-inactive md-36">view_stream</i></a>
+
+            }
+            {
+                <a asp-controller="Gallery" asp-action="Table"><i class="material-icons md-light md-inactive md-36">list</i></a>
+                <a asp-controller="Gallery" asp-action="Index"><i class="material-icons md-light md-inactive md-36">view_module</i></a>
                 <a asp-controller="Image" asp-action="Upload"><i class="image-upload float-right material-icons md-light md-inactive md-36">add</i></a>
             }
         </div>
     </div>
-    <div class="container-fluid">
-        @RenderBody()
-    </div>
+    @RenderBody()
     <footer class="footer">
         <div class="container text-center">
             <span class="text-muted">© 2019 WebGallery</span>

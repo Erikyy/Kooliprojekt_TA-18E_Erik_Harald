@@ -236,6 +236,11 @@ hr {
     font-size: 48px;
 }
 
+.no-pics {
+    margin-top: 10rem;
+    height: 300px;
+}
+
 /* UPLOAD FORM */
 
 .upload-form {

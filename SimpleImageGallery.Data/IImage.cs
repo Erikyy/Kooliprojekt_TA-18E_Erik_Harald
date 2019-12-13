@@ -15,5 +15,6 @@ namespace SimpleImageGallery.Data
         CloudBlobContainer GetBlobContainer(string connectionString, string containerName);
         Task SetImage(string title, string tags, Uri uri);
         List<ImageTag> ParseTags(string tags);
+        IEnumerable<GalleryImage> SearchImage(string searchQuery);
     }
 }
