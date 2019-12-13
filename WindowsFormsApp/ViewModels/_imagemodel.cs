@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp.ViewModels
 {
-    public interface _imagemodel
+    public interface IImagemodel
     {
         IEnumerable<Image> GetAllImages();
 

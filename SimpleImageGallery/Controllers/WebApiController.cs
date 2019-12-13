@@ -19,10 +19,7 @@ namespace SimpleImageGallery.Controllers
         {
             _datacontext = datacontext;
         }
-        public GetPaged()
-        {
-
-        }
+        
         public async Task<IList<ImageController>>List(int page)
         {
             var PagedResult = new List<ImageController>();

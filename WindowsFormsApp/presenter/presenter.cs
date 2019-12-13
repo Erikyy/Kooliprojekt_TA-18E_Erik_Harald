@@ -1,48 +1,45 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Wpf_App.ViewModels;
+﻿using System.Linq;
+using WindowsFormsApp.ViewModels;
+
 
 namespace WindowsFormsApp.presenter
 {
     public class presenter
     {
-        private readonly IWindowService _view;
-        private readonly ICustomerRepository _repository;
+        private readonly IImageView _view;
+        private readonly IImagemodel _imagemodel;
 
-        public CustomerPresenter(ICustomerView view, ICustomerRepository repository)
+        public presenter(IImageView view, IImagemodel repository)
         {
             _view = view;
-            view.Presenter = this;
-            _repository = repository;
+            view.presenter = this;
+            _imagemodel = repository;
 
-            UpdateCustomerListView();
+            UpdateImageListView();
         }
 
-        private void UpdateCustomerListView()
+        private void UpdateImageListView()
         {
-            var customerNames = from customer in _repository.GetAllCustomers() select customer.Name;
-            int selectedCustomer = _view.SelectedCustomer >= 0 ? _view.SelectedCustomer : 0;
-            _view.CustomerList = customerNames.ToList();
-            _view.SelectedCustomer = selectedCustomer;
+            var imageNames = from image in _imagemodel.GetAllImages() select image.Title;
+            int selectedImage = _view.SelectedImage >= 0 ? _view.SelectedImage : 0;
+            _view.ImageList = imageNames.ToList();
+            _view.SelectedImage = selectedImage;
         }
 
-        public void UpdateCustomerView(int p)
+        public void UpdateImageView(int p)
         {
             
-            Customer customer = _repository.GetCustomer(p);
-            _view.CustomerName = customer.Name;
-            _view.Address = customer.Address;
-            _view.Phone = customer.Phone;
+            Image image = _imagemodel.GetImage(p);
+            _view.Title = image.Title;
+            _view.Tags = image.Tags;
+           
         }
 
         public void SaveCustomer()
         {
-            Customer customer = new Customer { Name = _view.CustomerName, Address = _view.Address, Phone = _view.Phone };
-            _repository.SaveCustomer(_view.SelectedCustomer, customer);
-            UpdateCustomerListView();
+            Image image = new Image { Title = _view.Title, Tags = _view.Tags};
+            _imagemodel.SaveImage(_view.SelectedImage, image);
+            UpdateImageListView();
         }
     }
 }
