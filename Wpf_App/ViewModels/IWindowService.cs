@@ -2,7 +2,7 @@
 
 namespace Wpf_App.ViewModels
 {
-    internal interface IWindowService
+    public interface IWindowService
     {
         void ShowWindow<T>(object DataContext) where T : Window, new();
 

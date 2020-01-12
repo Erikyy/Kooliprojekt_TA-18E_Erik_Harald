@@ -6,19 +6,20 @@ using System.Text;
 using System.Threading.Tasks;
 
 
+
 namespace Wpf_App.HttpClient
 {
-    public class HttpClient
+    public class Client
     {
         private const string BaseUrl = "http://localhost:59852/api/";
 
-
+        public System.Net.Http.HttpClient client = new System.Net.Http.HttpClient();
 
         public async Task<IList<ImageController>> List(int page)
 
         {
 
-            using (HttpClient client = new HttpClient())
+            using (client)
 
             {
 

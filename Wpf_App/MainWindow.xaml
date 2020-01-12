@@ -5,9 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Wpf_App"
         mc:Ignorable="d"
-        DataContext="{StaticResource ListViewModel}"
+        
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        
+        <ListView Margin="10" ItemsSource="{Binding}"
+                  DataContext="{Binding Invoices}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Invoice No" DisplayMemberBinding="{Binding InvoiceNo}"/>
+                    <GridViewColumn Header="Date" DisplayMemberBinding="{Binding Date}"/>
+                    
+                </GridView>
+            </ListView.View>
+        </ListView>
 
     </Grid>
 </Window>
