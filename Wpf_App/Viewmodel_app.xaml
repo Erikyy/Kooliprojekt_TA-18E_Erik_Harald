@@ -5,11 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Wpf_App"
         xmlns:localViewModels="clr-namespace:Wpf_App.ViewModels"
-        mc:Ignorable="d"
-        <Application.Resources>
+        mc:Ignorable="d">
+    <Application.Resources>
 
             
-    <localViewModels:ListViewModel x:Key="InvoiceListViewModel" />
+    <localViewModels:ListViewModel x:Key="ListViewModel">
+        
+    </localViewModels:ListViewModel> 
 
             
         </Application.Resources>

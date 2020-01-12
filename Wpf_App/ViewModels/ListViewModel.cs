@@ -1,4 +1,4 @@
-﻿using GalaSoft.MvvmLight.Command;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -36,7 +36,7 @@ namespace Wpf_App.ViewModels
             OpenNewInvoiceCommand = new RelayCommand<object>(arg =>
 
             {
-                var result = _windowService.ShowDialog<AddInvoiceWindow>(null);
+                var result = _windowService.ShowDialog<>(null);
                 if (!result)
 
                 {
