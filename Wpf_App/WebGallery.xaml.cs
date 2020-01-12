@@ -19,7 +19,7 @@ namespace Wpf_App
     {
         public WebGallery()
         {
-            InitializeComponent();
+          //  InitializeComponent();
         }
     }
 }
