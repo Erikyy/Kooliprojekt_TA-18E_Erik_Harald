@@ -1,9 +1,9 @@
 ﻿using System.Windows;
 using WindowsFormsApp.presenter;
 
-namespace Wpf_App.ViewModels
+namespace WindowsFormsApp.ViewModels
 {
-    internal interface IWindowService
+    public interface IWindowService
     {
         void ShowWindow<T>(object DataContext) where T : WindowService, new();
 

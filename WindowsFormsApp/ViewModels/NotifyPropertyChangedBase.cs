@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
 
-namespace Wpf_App.ViewModels
+namespace WindowsFormsApp.ViewModels
 {
     public abstract class NotifyPropertyChangedBase : INotifyPropertyChanged
     {

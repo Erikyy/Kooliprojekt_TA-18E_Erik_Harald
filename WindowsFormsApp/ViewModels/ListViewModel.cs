@@ -1,11 +1,14 @@
 ﻿using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using System.Windows.Documents;
+using WindowsFormsApp.forms;
+using WindowsFormsApp.HttpClient;
 
-namespace Wpf_App.ViewModels
+namespace WindowsFormsApp.ViewModels
 {
     public class ListViewModel : NotifyPropertyChangedBase
     {
-        private readonly HttpClient _httpClient = new HttpClient();
+        private readonly Client _httpClient = new Client();
         private readonly IWindowService _windowService;
 
 
@@ -31,7 +34,7 @@ namespace Wpf_App.ViewModels
             OpenNewInvoiceCommand = new RelayCommand<object>(arg =>
 
             {
-                var result = _windowService.ShowDialog<AddInvoiceWindow>(null);
+                var result = _windowService.ShowDialog<ImageForm>(null);
                 if (!result)
 
                 {

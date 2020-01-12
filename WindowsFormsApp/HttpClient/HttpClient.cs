@@ -1,22 +1,21 @@
 ﻿using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
+using SimpleImageGallery.Controllers;
 
-namespace Wpf_App.HttpClient
+namespace WindowsFormsApp.HttpClient
 {
-    public class HttpClient
+    public class Client
     {
         private const string BaseUrl = "http://localhost:59852/api/";
 
+        public System.Net.Http.HttpClient client = new System.Net.Http.HttpClient();
 
-
-        public async Task<IList<>> List(int page)
+        public async Task<IList<ImageController>> List(int page)
 
         {
 
-            using (var client = new HttpClient())
+            using (client)
 
             {
 
@@ -24,7 +23,7 @@ namespace Wpf_App.HttpClient
 
 
 
-                return JsonConvert.DeserializeObject<List<InvoiceListItem>>(json);
+                return JsonConvert.DeserializeObject<List<ImageController>>(json);
 
             }
 
