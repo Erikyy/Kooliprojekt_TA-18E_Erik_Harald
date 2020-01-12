@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using SimpleImageGallery.Controllers;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -24,7 +25,7 @@ namespace Wpf_App.HttpClient
 
 
 
-                return JsonConvert.DeserializeObject<List<InvoiceListItem>>(json);
+                return JsonConvert.DeserializeObject<List<ListItem>>(json);
 
             }
 

@@ -9,7 +9,9 @@
         <Application.Resources>
 
             
-    <localViewModels:ListViewModel x:Key="InvoiceListViewModel" />
+    <localViewModels:ListViewModel x:Key="ListViewModel">
+        
+    </localViewModels:ListViewModel> 
 
             
         </Application.Resources>

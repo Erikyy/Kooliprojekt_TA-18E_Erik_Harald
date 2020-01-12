@@ -17,8 +17,11 @@ namespace WindowsFormsApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            var imagemodel = new ViewModels.
-            Application.Run(new Form());
+            var imagemodel = new ViewModels.ImageXMLModel(Application.StartupPath);
+            var view = new ImageForm();
+
+            var Presenter = new presenter.presenter(view, imagemodel);
+            Application.Run(view);
         }
     }
 }
