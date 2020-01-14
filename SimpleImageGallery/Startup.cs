@@ -94,21 +94,21 @@ namespace SimpleImageGallery
                     pattern: "{controller=Gallery}/{action=Index}/{id?}");
             });
 
-            var options = new DbContextOptions<SimpleImageGalleryDbContext>();
-            var provider = new FileTenantProvider();
+           // var options = new DbContextOptions<SimpleImageGalleryDbContext>();
+           // var provider = new FileTenantProvider();
 
-            foreach(var tenant in provider.ListTenants())
-            {
-                provider.SetHostName(tenant.Host);
-                using(var dbContext = new SimpleImageGalleryDbContext(options, provider))
-                {
-                    Debug.WriteLine(dbContext.Database.GetDbConnection().ConnectionString);
-                    if(dbContext.GalleryImages.Count() == 0)
-                    {
+           // foreach(var tenant in provider.ListTenants())
+           // {
+           //     provider.SetHostName(tenant.Host);
+           //     using(var dbContext = new SimpleImageGalleryDbContext(options, provider))
+           //     {
+           //         Debug.WriteLine(dbContext.Database.GetDbConnection().ConnectionString);
+           //         if(dbContext.GalleryImages.Count() == 0)
+           //         {
                         // Lisa andmed andmebaasi
-                    }
-                }
-            }
+           //         }
+            //    }
+          //  }
         }
     }
 }
