@@ -103,6 +103,10 @@ namespace SimpleImageGallery
                 using(var dbContext = new SimpleImageGalleryDbContext(options, provider))
                 {
                     Debug.WriteLine(dbContext.Database.GetDbConnection().ConnectionString);
+                    if(dbContext.GalleryImages.Count() == 0)
+                    {
+                        // Lisa andmed andmebaasi
+                    }
                 }
             }
         }
