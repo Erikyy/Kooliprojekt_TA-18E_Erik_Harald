@@ -21,6 +21,10 @@ namespace SimpleImageGallery.Data
         {
             _host = accessor.HttpContext.Request.Host.ToString();
         }
+        internal FileTenantProvider()
+        {
+
+        }
 
         public Tenant GetTenant()
 
