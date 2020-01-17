@@ -34,7 +34,7 @@ namespace SimpleImageGallery.Controllers
         [HttpPost]
         public async Task<IActionResult> UploadNewImage(IFormFile file, string tags, string title) 
         {
-            var container = _imageService.GetBlobContainer(AzureConnectionString, "images");
+            var container = _imageService.GetBlobContainer(AzureConnectionString, "erik");
 
             var content = ContentDispositionHeaderValue.Parse(file.ContentDisposition);
             var fileName = content.FileName.Trim('"');
