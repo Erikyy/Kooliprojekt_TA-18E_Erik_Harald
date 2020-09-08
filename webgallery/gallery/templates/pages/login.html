@@ -1,18 +1,26 @@
 {% extends 'base.html'%}
 {% block content %}
-    <div class="container">
-        <h2>Login</h2>
 
-        <form method="POST" action="{% url 'gallery:login' %}">
-            {% csrf_token %}
-            <label for="username">Username:</label>
-            <input type="text" name="username" placeholder="Username">
-            <br>
-            <label for="password">Password:</label>
-            <input type="password" name="password" placeholder="Password">
-            <br>
-            <input type="submit" name="" value="Login">
+<div class="container">
+    <div class="row d-flex justify-content-center my-4">
+        <div class="col-md-7">
+            <div class="shadow p-3 mb-5 bg-white rounded" style="margin-top: 6rem">
+                <h2>Login</h2>
 
-        </form> 
+                <form method="POST" action="{% url 'gallery:login' %}">
+                    {% csrf_token %}
+                    <label for="username">Username:</label>
+                    <input type="text" class="form-control" name="username" placeholder="Username">
+                    <br>
+                    <label for="password">Password:</label>
+                    <input type="password" class="form-control" name="password" placeholder="Password">
+                    <br>
+                    <input type="submit" name="" value="Login">
+
+                </form>
+            </div>
+        </div>
     </div>
+</div>
+
 {% endblock %}

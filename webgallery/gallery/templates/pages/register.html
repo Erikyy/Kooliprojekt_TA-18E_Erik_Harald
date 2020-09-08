@@ -2,17 +2,25 @@
 
 {% block content %}
 <div class="container">
-    {% if registered %}
-      <h2>Thank you for registering!</h2>
-    {% else %}
-        <form method="post">
-            {% csrf_token %}
-            {{ user_form.as_p }}
-            {{ profile_form.as_p }}
-            <input type="submit" name="" value="Register">
-         </form>
-        <p>If you already have an account, <a href="/login">login </a> instead.
-            </p>
-    {% endif %}
+    <div class="row d-flex justify-content-center my-4">
+        <div class="col-md-7">
+            <div class="shadow p-3 mb-5 bg-white rounded" style="margin-top: 6rem">
+                <h2>Register</h2>
+
+                {% if registered %}
+                <h2>Thank you for registering!</h2>
+                {% else %}
+                <form method="post">
+                    {% csrf_token %}
+                    {{ user_form.as_p }}
+                    {{ profile_form.as_p }}
+                    <input type="submit" name="" value="Register">
+                </form>
+                <p>If you already have an account, <a href="/login">login </a> instead.
+                </p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}
