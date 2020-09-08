@@ -2,4 +2,13 @@
 
 {% block content %}
     <h1>Register page</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        
+
+
+    </form>
+    <p>If you already have an account, <a href="/login">login </a> instead.
+    </p>
 {% endblock %}
