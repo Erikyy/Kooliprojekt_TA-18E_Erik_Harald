@@ -14,14 +14,19 @@ def home(request):
 
 @login_required
 def createpost(request):
-    
-    post_form = UserPostForm(data=request.POST)
-    if post_form.is_valid():
-        instance = post_form.save(commit=False)
-        if 'post_img' in request.FILES:
-            instance.post_img = request.FILES['post_img']
-        instance.save()
-
+    if request.method == 'POST':
+        post_form = UserPostForm(request.POST)
+        if post_form.is_valid():
+            user = request.user
+            instance = post_form.save(commit=False)
+            instance.user = user
+            if 'post_img' in request.FILES:
+                instance.post_img = request.FILES['post_img']
+          
+            
+            instance.save()
+    else:
+        post_form = UserPostForm()
     context = { 'page_title': 'Add image', 'post_form': post_form}
     return render(request, 'pages/add_img.html', context)
 def user_login(request):
