@@ -43,12 +43,12 @@ def register(request):
             user.save()
             profile = profile_form.save(commit=False)
             profile.user = user
-            if 'profile_pics' in request.FILES:
-                profile.prof_pic = request.FILES['profile_pics']
+            if 'profile_pic' in request.FILES:
+                profile.profile_pic = request.FILES['profile_pic']
             profile.save()
             registered = True
         else:
-            print(user_form.error, profile_form.error)
+            print(user_form.errors, profile_form.errors)
     else:
         user_form = UserForm()
         profile_form = UserProfileForm()
