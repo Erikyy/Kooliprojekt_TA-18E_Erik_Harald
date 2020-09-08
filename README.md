@@ -3,4 +3,4 @@
 Environment on pipenv.
 
 
-Run `pipenv` shell to start environment.
+Run `pipenv shell` to start environment.
