@@ -8,6 +8,10 @@ def gallery(request):
     context = { 'page_title': 'Main Page'}
     return render(request, 'pages/main.html', {})
 
+def home(request):
+    context = { 'page_title': 'Home' }
+    return render(request, 'pages/home.html', {})
+
 
 def user_login(request):
     context = { 'page_title': 'Login'}
@@ -19,7 +23,7 @@ def user_login(request):
             if user.is_active:
                 login(request,user)
                 #Here redirect to user page with home.html
-                return HttpResponseRedirect(reverse('gallery'))
+                return HttpResponseRedirect(reverse('gallery:home'))
             else:
                 return HttpResponse("Your account was inactive")
         else:

@@ -1,4 +1,18 @@
 {% extends 'base.html'%}
 {% block content %}
-    <h1>Login page</h1>
+    <div class="container">
+        <h2>Login</h2>
+
+        <form method="POST" action="{% url 'gallery:login' %}">
+            {% csrf_token %}
+            <label for="username">Username:</label>
+            <input type="text" name="username" placeholder="Username">
+            <br>
+            <label for="password">Password:</label>
+            <input type="password" name="password" placeholder="Password">
+            <br>
+            <input type="submit" name="" value="Login">
+
+        </form> 
+    </div>
 {% endblock %}

@@ -3,7 +3,8 @@
 {% if user.is_authenticated %}
 
     <h1>User main page</h1>
+    <p>{{ user.username }}</p>
 {% else %}
-    <p>Please<a href="{% url%}">login</a> first</p>
+    <p>Please <a href="{% url 'gallery:login' %}">login</a> first</p>
 {% endif %}
 {% endblock %}
