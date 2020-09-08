@@ -63,4 +63,4 @@ def register(request):
 @login_required
 def user_logout(request):
     logout(request)
-    return HttpResponseRedirect(reverse('gallery'))
+    return HttpResponseRedirect(reverse('gallery:gallery'))
