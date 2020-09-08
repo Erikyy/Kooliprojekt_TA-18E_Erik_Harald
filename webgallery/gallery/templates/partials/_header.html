@@ -19,7 +19,13 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'gallery:logout' %}">Logout</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'gallery:home' %}">Home</a>
+                        </li>
                         <p>{{ user.username }}</p>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'gallery:add_img' %}">Add</a>
+                        </li>
                     {% else %}
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'gallery:login' %}">Login</a>

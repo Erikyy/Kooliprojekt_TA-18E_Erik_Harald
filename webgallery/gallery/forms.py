@@ -1,14 +1,14 @@
 from django import forms
-from gallery.models import UserProfile
+from gallery.models import UserProfile, CreatePost
 from django.contrib.auth.models import User
 
 
 class UserForm(forms.ModelForm):
-    username = forms.CharField(widget=forms.PasswordInput(
+    username = forms.CharField(widget=forms.TextInput(
         attrs={'class': 'form-control'}
     ))
 
-    password = forms.CharField(widget=forms.TextInput(
+    password = forms.CharField(widget=forms.PasswordInput(
         attrs={'class': 'form-control'}
     ))
 
@@ -25,3 +25,10 @@ class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         fields = ('profile_pic',)
+
+
+class UserPostForm(forms.ModelForm):
+    
+    class Meta:
+        model = CreatePost
+        fields = ('title', 'post_img')

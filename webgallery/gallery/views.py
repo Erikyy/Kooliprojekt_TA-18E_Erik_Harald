@@ -1,18 +1,29 @@
 from django.shortcuts import render
-from gallery.forms import UserForm, UserProfileForm
+from gallery.forms import UserForm, UserProfileForm, UserPostForm
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 def gallery(request):
     context = { 'page_title': 'Main Page'}
-    return render(request, 'pages/main.html', {})
+    return render(request, 'pages/main.html', context)
 
 def home(request):
     context = { 'page_title': 'Home' }
-    return render(request, 'pages/home.html', {})
+    return render(request, 'pages/home.html', context)
 
+@login_required
+def createpost(request):
+    
+    post_form = UserPostForm(data=request.POST)
+    if post_form.is_valid():
+        instance = post_form.save(commit=False)
+        if 'post_img' in request.FILES:
+            instance.post_img = request.FILES['post_img']
+        instance.save()
 
+    context = { 'page_title': 'Add image', 'post_form': post_form}
+    return render(request, 'pages/add_img.html', context)
 def user_login(request):
     context = { 'page_title': 'Login'}
     if request.method == 'POST':
@@ -29,10 +40,10 @@ def user_login(request):
         else:
             return HttpResponse("Invalid login credentials")
     else:
-        return render(request, 'pages/login.html', {})
+        return render(request, 'pages/login.html', context)
 
 def register(request):
-    context = { 'page_title': 'Register'}
+    
     registered = False
     if request.method == 'POST':
         user_form = UserForm(data=request.POST)
@@ -57,7 +68,8 @@ def register(request):
     return render(request, 'pages/register.html', {
                         'user_form':user_form,
                         'profile_form': profile_form,
-                        'registered': registered
+                        'registered': registered,
+                        'page_title': 'Register'
     })
 
 @login_required
