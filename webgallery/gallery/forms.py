@@ -28,6 +28,11 @@ class UserProfileForm(forms.ModelForm):
 
 
 class UserPostForm(forms.ModelForm):
+    title = forms.CharField(widget=forms.TextInput(
+        attrs={'class': 'form-control'}
+    ))
+
     class Meta:
         model = Post
+
         fields = ('title', 'post_img')
