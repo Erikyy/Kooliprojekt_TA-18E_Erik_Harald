@@ -9,22 +9,27 @@ from django.contrib.auth.decorators import login_required
 
 
 def gallery(request):
-    context = { 'page_title': 'Main Page'}
+    context = {'page_title': 'Main Page'}
     return render(request, 'pages/main.html', context)
 
+
 def home(request):
-    context = { 'page_title': 'Home' }
+    context = {'page_title': 'Home'}
     return render(request, 'pages/home.html', context)
+
 
 @login_required
 def removepost(request):
     pass
 
+
 def detail(request):
     pass
 
+
+@login_required
 def createpost(request):
-    
+
     if request.method == 'POST':
         post_form = UserPostForm(request.POST, request.FILES)
         if post_form.is_valid():
@@ -33,20 +38,20 @@ def createpost(request):
             obj.save()
     else:
         post_form = UserPostForm()
-    context = { 'page_title': 'Add image', 'post_form': post_form}
+    context = {'page_title': 'Add image', 'post_form': post_form}
     return render(request, 'pages/add_img.html', context)
 
 
 def user_login(request):
-    context = { 'page_title': 'Login'}
+    context = {'page_title': 'Login'}
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
-        user = authenticate(username = username, password = password)
+        user = authenticate(username=username, password=password)
         if user:
             if user.is_active:
-                login(request,user)
-                #Here redirect to user page with home.html
+                login(request, user)
+                # Here redirect to user page with home.html
                 return HttpResponseRedirect(reverse('gallery:home'))
             else:
                 return HttpResponse("Your account was inactive")
@@ -55,8 +60,9 @@ def user_login(request):
     else:
         return render(request, 'pages/login.html', context)
 
+
 def register(request):
-    
+
     registered = False
     if request.method == 'POST':
         user_form = UserForm(data=request.POST)
@@ -77,13 +83,13 @@ def register(request):
         user_form = UserForm()
         profile_form = UserProfileForm()
 
-
     return render(request, 'pages/register.html', {
-                        'user_form':user_form,
-                        'profile_form': profile_form,
-                        'registered': registered,
-                        'page_title': 'Register'
+        'user_form': user_form,
+        'profile_form': profile_form,
+        'registered': registered,
+        'page_title': 'Register'
     })
+
 
 @login_required
 def user_logout(request):
