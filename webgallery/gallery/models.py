@@ -13,15 +13,16 @@ class UserProfile(models.Model):
     def __str__(self):
         return self.user.username
 
-class CreatePost(models.Model):
+class Post(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     post_img = models.FileField(upload_to=prof_dir)
     title = models.CharField(max_length=50)
+
     
     def __str__(self):
         return self.title
 
-    
+
     
     
 

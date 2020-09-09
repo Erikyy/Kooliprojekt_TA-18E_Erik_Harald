@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from gallery.forms import UserForm, UserProfileForm, UserPostForm
+from gallery.models import Post, UserProfile
+from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
@@ -18,21 +20,25 @@ def home(request):
 def removepost(request):
     pass
 
-
+def detail(request):
+    pass
 
 def createpost(request):
-    user = request.user
+    
     if request.method == 'POST':
-        post_form = UserPostForm(request.POST)
+        post_form = UserPostForm(request.POST or None)
         if post_form.is_valid():
             
-            instance = post_form.save()
-            instance.user = user
-            if 'post_img' in request.FILES:
-                instance.post_img = request.FILES['post_img']
+            instance = post_form.save(commit=False)
+            
+            post = Post()
+            post.user = request.user
+            post.post_img = request.FILES['post_img']
+            post.save()
+            #instance.post_img = request.FILES['post_img']
           
             
-            instance.save()
+            #instance.save()
     else:
         post_form = UserPostForm()
     context = { 'page_title': 'Add image', 'post_form': post_form}
