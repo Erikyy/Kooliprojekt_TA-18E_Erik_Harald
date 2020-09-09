@@ -4,6 +4,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
+
+
 def gallery(request):
     context = { 'page_title': 'Main Page'}
     return render(request, 'pages/main.html', context)
@@ -13,13 +15,19 @@ def home(request):
     return render(request, 'pages/home.html', context)
 
 @login_required
+def removepost(request):
+    pass
+
+
+
 def createpost(request):
+    user = request.user
     if request.method == 'POST':
         post_form = UserPostForm(request.POST)
         if post_form.is_valid():
             
-            instance = post_form.save(commit=False)
-            
+            instance = post_form.save()
+            instance.user = user
             if 'post_img' in request.FILES:
                 instance.post_img = request.FILES['post_img']
           
