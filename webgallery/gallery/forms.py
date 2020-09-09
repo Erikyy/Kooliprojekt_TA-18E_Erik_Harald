@@ -1,5 +1,5 @@
 from django import forms
-from gallery.models import UserProfile
+from gallery.models import UserProfile, CreatePost
 from django.contrib.auth.models import User
 
 
@@ -28,7 +28,6 @@ class UserProfileForm(forms.ModelForm):
 
 
 class UserPostForm(forms.ModelForm):
-    
     class Meta:
-        model = UserProfile
+        model = CreatePost
         fields = ('title', 'post_img')
