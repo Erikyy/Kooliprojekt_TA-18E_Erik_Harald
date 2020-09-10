@@ -5,7 +5,12 @@
     <h1>User main page</h1>
     <p>{{ user.username }}</p>
     <img src="{{ request.user.userprofile.profile_pic.url }}" alt="">
+    {% for queryset in querysets.all %}
+        <h3>{{ queryset.title }}</h3>
+        <img src="{{ queryset.post_img.url }}" alt="">
+    {% endfor %}
 {% else %}
     <p>Please <a href="{% url 'gallery:login' %}">login</a> first</p>
+    
 {% endif %}
 {% endblock %}

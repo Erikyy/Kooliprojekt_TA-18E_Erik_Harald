@@ -14,7 +14,8 @@ def gallery(request):
 
 
 def home(request):
-    context = {'page_title': 'Home'}
+    queryset = Post.objects
+    context = {'page_title': 'Home', 'querysets': queryset}
     return render(request, 'pages/home.html', context)
 
 
