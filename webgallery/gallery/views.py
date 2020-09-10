@@ -15,7 +15,7 @@ def gallery(request):
 
 def home(request):
     private = Post.objects.private_posts(user=request.user)
-    queryset = Post.objects.all()
+    queryset = private.all()
     
     
     context = {'page_title': 'Home', 'querysets': queryset}
