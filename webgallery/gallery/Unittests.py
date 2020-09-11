@@ -11,12 +11,9 @@ class UTestCase(TestCase):
             username='Test1', email='test@test.com', password='top_secret'
         )
     def test_index_loads_properly(self):
-        response = self.client.get('localhost:8000')
+        response = self.client.get('http://127.0.0.1:8000')
+        print(response)
         self.assertEqual(response.status_code, 200)
-
-    def test_index_loads_properly_second(self):
-        response = self.client.get('192.168.0.0:9000')
-        self.assertEqual(response.status_code, 404)
 
     def test_home(self):
         request = self.factory.get('/testing/details')
