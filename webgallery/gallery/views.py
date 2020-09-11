@@ -12,7 +12,7 @@ def gallery(request):
     context = {'page_title': 'Main Page'}
     return render(request, 'pages/main.html', context)
 
-
+@login_required
 def home(request):
     private = Post.objects.private_posts(user=request.user)
     queryset = private.all()
@@ -26,7 +26,7 @@ def home(request):
 def removepost(request):
     pass
 
-
+@login_required
 def detail(request):
     pass
 
