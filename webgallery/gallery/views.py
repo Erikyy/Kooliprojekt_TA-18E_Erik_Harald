@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
 from gallery.forms import (
-UserForm,
-UserProfileForm,
-UserPostForm,
-EditProfileForm,
+    UserForm,
+    UserProfileForm,
+    UserPostForm,
+    EditProfileForm,
 
 )
 from gallery.models import Post, UserProfile
@@ -15,6 +15,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
 
+
 def gallery(request):
     if User.is_authenticated:
         template = 'pages/login.html'
@@ -23,6 +24,7 @@ def gallery(request):
     context = {'page_title': 'WebGallery'}
     return render(request, template, context)
 
+
 @login_required
 def home(request):
     private = Post.objects.private_posts(user=request.user)
@@ -30,48 +32,45 @@ def home(request):
     context = {'page_title': 'Home', 'querysets': queryset}
     return render(request, 'pages/home.html', context)
 
+
 @login_required
 def profile(request):
-    context = {'page_title':'Profile'}
+    context = {'page_title': 'Profile'}
     return render(request, 'pages/profile.html', context)
+
 
 @login_required
 def edit_profile(request):
-    if request.method =='POST':
-        edit_form = EditProfileForm(request.POST, instance = request.user)
-
+    if request.method == 'POST':
+        edit_form = EditProfileForm(request.POST, instance=request.user)
         if edit_form.is_valid():
             edit_form.save()
             return redirect('/profile')
-
     else:
-        edit_form = EditProfileForm(instance = request.user)
+        edit_form = EditProfileForm(instance=request.user)
     context = {'edit_form': edit_form}
     return render(request, 'pages/edit_profile.html', context)
 
+
 @login_required
 def change_password(request):
-    if request.method =='POST':
-        pass_form = PasswordChangeForm(data=request.POST, user = request.user)
+    if request.method == 'POST':
+        pass_form = PasswordChangeForm(data=request.POST, user=request.user)
 
         if pass_form.is_valid():
             pass_form.save()
             update_session_auth_hash(request, pass_form.user)
             return redirect('/profile')
-
     else:
-        pass_form = PasswordChangeForm(user = request.user)
+        pass_form = PasswordChangeForm(user=request.user)
     context = {'pass_form': pass_form}
     return render(request, 'pages/change_password.html', context)
-
-
-
 
 
 @login_required
 def delete_post(request, post_id=None):
     private = Post.objects.private_posts(user=request.user)
-    queryset = private.get(id = post_id)
+    queryset = private.get(id=post_id)
     queryset.delete()
     return HttpResponseRedirect(reverse('gallery:home'))
 
@@ -79,15 +78,13 @@ def delete_post(request, post_id=None):
 @login_required
 def detail(request, post_id):
     private = Post.objects.private_posts(user=request.user)
-    queryset = private.get(pk = post_id)
-
-    context = {'page_title':'test', 'queryset': queryset}
+    queryset = private.get(pk=post_id)
+    context = {'page_title': 'test', 'queryset': queryset}
     return render(request, 'pages/detail.html', context)
 
 
 @login_required
 def createpost(request):
-
     if request.method == 'POST':
         post_form = UserPostForm(request.POST, request.FILES)
         if post_form.is_valid():
@@ -121,7 +118,6 @@ def user_login(request):
 
 
 def register(request):
-
     registered = False
     if request.method == 'POST':
         user_form = UserForm(data=request.POST)
