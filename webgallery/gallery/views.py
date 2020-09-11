@@ -20,11 +20,13 @@ def home(request):
     
     context = {'page_title': 'Home', 'querysets': queryset}
     return render(request, 'pages/home.html', context)
-
-
 @login_required
-def removepost(request):
-    pass
+def delete_post(request, post_id=None):
+    private = Post.objects.private_posts(user=request.user)
+    queryset = private.get(id = post_id)
+    queryset.delete()
+    return HttpResponseRedirect(reverse('gallery:home'))
+
 
 @login_required
 def detail(request, post_id):
