@@ -56,7 +56,6 @@ def edit_profile(request):
 def change_password(request):
     if request.method == 'POST':
         pass_form = PasswordChangeForm(data=request.POST, user=request.user)
-
         if pass_form.is_valid():
             pass_form.save()
             update_session_auth_hash(request, pass_form.user)
