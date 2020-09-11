@@ -19,7 +19,7 @@ html {
 }
 
 .toolbar {
-    width: 100%; 
+    width: 100%;
     height: 3.5rem;
 }
 
@@ -73,7 +73,7 @@ td img {
 }
 
 .metadata {
-    box-shadow: 0px -2px -4px rgba(0, 0, 0, 0.5); 
+    box-shadow: 0px -2px -4px rgba(0, 0, 0, 0.5);
 }
 
 .metadata .row {
@@ -110,4 +110,9 @@ hr {
 
 .login {
     position: relative;
+}
+.profile-img {
+  height: auto;
+  width: 45px;
+  border-radius: 50%
 }
