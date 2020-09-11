@@ -9,20 +9,22 @@ from django.contrib.auth.decorators import login_required
 
 
 def gallery(request):
-    context = {'page_title': 'Main Page'}
-    return render(request, 'pages/main.html', context)
+    if User.is_authenticated:
+        template = 'pages/login.html'
+    else:
+        template = 'pages/main.html'
+    context = {'page_title': 'WebGallery'}
+    return render(request, template, context)
 
 @login_required
 def home(request):
     private = Post.objects.private_posts(user=request.user)
     queryset = private.all()
-    
-    
     context = {'page_title': 'Home', 'querysets': queryset}
     return render(request, 'pages/home.html', context)
 
 def profile(request):
-    context = {'oage_title':'Profile'}
+    context = {'page_title':'Profile'}
     return render(request, 'pages/profile.html', context)
     
     

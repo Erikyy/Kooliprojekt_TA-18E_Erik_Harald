@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="306.16095mm"
+   height="43.488022mm"
+   viewBox="0 0 306.16095 43.488022"
+   version="1.1"
+   id="svg8"
+   sodipodi:docname="logo.svg"
+   inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)">
+  <defs
+     id="defs2">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient937">
+      <stop
+         style="stop-color:#ab1c80;stop-opacity:1"
+         offset="0"
+         id="stop933" />
+      <stop
+         style="stop-color:#2dce00;stop-opacity:0.93927121"
+         offset="0.46717161"
+         id="stop941" />
+      <stop
+         style="stop-color:#fed203;stop-opacity:0.99607843"
+         offset="1"
+         id="stop935" />
+    </linearGradient>
+    <rect
+       x="249.01501"
+       y="216.83577"
+       width="89.802559"
+       height="17.399246"
+       id="rect868" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient937"
+       id="linearGradient939"
+       x1="106.45246"
+       y1="215.61969"
+       x2="102.5256"
+       y2="208.88449"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.6369443,0,0,1.6369443,-437.18405,-558.22132)" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.50000001"
+     inkscape:cx="714.36524"
+     inkscape:cy="193.48843"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     showborder="false"
+     inkscape:pagecheckerboard="true"
+     inkscape:window-width="1350"
+     inkscape:window-height="729"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(17.203696,-184.28555)">
+    <g
+       aria-label="WEBGALLERY"
+       transform="matrix(2.7895606,0,0,2.7895606,-713.02416,-412.57131)"
+       id="text866"
+       style="font-style:normal;font-weight:normal;font-size:12.7px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect868);fill:#000000;fill-opacity:1;stroke:none">
+      <path
+         d="m 249.4373,218.81411 h 1.26504 l 1.94717,7.82588 1.94097,-7.82588 h 1.40766 l 1.94717,7.82588 1.94097,-7.82588 h 1.27124 l -2.32544,9.25835 h -1.5751 l -1.95337,-8.03672 -1.97197,8.03672 h -1.5751 z"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.7px;font-family:'Apple Braille';-inkscape-font-specification:'Apple Braille';fill:#000000"
+         id="path22" />
+      <path
+         d="m 262.81943,218.81411 h 5.85391 v 1.0542 h -4.60127 v 2.74092 h 4.40903 v 1.0542 h -4.40903 v 3.35483 h 4.71289 v 1.0542 h -5.96553 z"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.7px;font-family:'Apple Braille';-inkscape-font-specification:'Apple Braille';fill:#000000"
+         id="path24" />
+      <path
+         d="m 272.09639,223.65103 v 3.39204 h 2.00917 q 1.0108,0 1.49449,-0.41548 0.48989,-0.42168 0.48989,-1.28364 0,-0.86817 -0.48989,-1.27745 -0.48369,-0.41547 -1.49449,-0.41547 z m 0,-3.80752 v 2.79052 h 1.85415 q 0.91777,0 1.36425,-0.34106 0.45269,-0.34727 0.45269,-1.0542 0,-0.70073 -0.45269,-1.048 -0.44648,-0.34726 -1.36425,-0.34726 z m -1.25264,-1.0294 h 3.1998 q 1.43247,0 2.20762,0.59531 0.77515,0.59532 0.77515,1.69292 0,0.84956 -0.39688,1.35186 -0.39687,0.50229 -1.16582,0.62632 0.92398,0.19843 1.43247,0.83095 0.5147,0.62632 0.5147,1.5689 0,1.24024 -0.84336,1.91616 -0.84336,0.67593 -2.39985,0.67593 h -3.32383 z"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.7px;font-family:'Apple Braille';-inkscape-font-specification:'Apple Braille';fill:#000000"
+         id="path26" />
+      <path
+         d="m 285.64595,226.75161 v -2.48667 h -2.04639 v -1.02939 h 3.28662 v 3.97495 q -0.72554,0.5147 -1.5999,0.78135 -0.87437,0.26044 -1.86655,0.26044 -2.17041,0 -3.39825,-1.26503 -1.22163,-1.27124 -1.22163,-3.53467 0,-2.26963 1.22163,-3.53467 1.22784,-1.27124 3.39825,-1.27124 0.90537,0 1.71772,0.22324 0.81855,0.22324 1.50688,0.65733 v 1.33325 q -0.69453,-0.58911 -1.47587,-0.88677 -0.78135,-0.29766 -1.64331,-0.29766 -1.69913,0 -2.55489,0.94878 -0.84956,0.94878 -0.84956,2.82774 0,1.87275 0.84956,2.82153 0.85576,0.94878 2.55489,0.94878 0.66352,0 1.18442,-0.11162 0.5209,-0.11782 0.93638,-0.35967 z"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.7px;font-family:'Apple Braille';-inkscape-font-specification:'Apple Braille';fill:#000000"
+         id="path28" />
+      <path
+         d="m 292.2688,220.04814 -1.69912,4.60748 h 3.40444 z m -0.70693,-1.23403 h 1.42006 l 3.52847,9.25835 h -1.30225 l -0.84336,-2.37505 h -4.17338 l -0.84336,2.37505 h -1.32085 z"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.7px;font-family:'Apple Braille';-inkscape-font-specification:'Apple Braille';fill:#000000"
+         id="path30" />
+      <path
+         d="m 297.86225,218.81411 h 1.25264 v 8.20415 h 4.50825 v 1.0542 h -5.76089 z"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.7px;font-family:'Apple Braille';-inkscape-font-specification:'Apple Braille';fill:#000000"
+         id="path32" />
+      <path
+         d="m 304.93779,218.81411 h 1.25264 v 8.20415 h 4.50825 v 1.0542 h -5.76089 z"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.7px;font-family:'Apple Braille';-inkscape-font-specification:'Apple Braille';fill:#000000"
+         id="path34" />
+      <path
+         d="m 312.01333,218.81411 h 5.8539 v 1.0542 h -4.60127 v 2.74092 h 4.40904 v 1.0542 h -4.40904 v 3.35483 h 4.71289 v 1.0542 h -5.96552 z"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.7px;font-family:'Apple Braille';-inkscape-font-specification:'Apple Braille';fill:#000000"
+         id="path36" />
+      <path
+         d="m 324.42807,223.73164 q 0.40308,0.13643 0.78135,0.58291 0.38447,0.44649 0.76894,1.22783 l 1.27124,2.53008 h -1.34565 l -1.18442,-2.37505 q -0.45889,-0.93017 -0.89297,-1.23403 -0.42788,-0.30386 -1.17202,-0.30386 h -1.36426 v 3.91294 h -1.25264 v -9.25835 h 2.82774 q 1.5875,0 2.36884,0.66353 0.78135,0.66352 0.78135,2.00298 0,0.87436 -0.40928,1.45107 -0.40307,0.57671 -1.17822,0.79995 z m -3.13779,-3.88813 v 3.28662 h 1.5751 q 0.90537,0 1.36425,-0.41548 0.46509,-0.42168 0.46509,-1.23403 0,-0.81236 -0.46509,-1.22164 -0.45888,-0.41547 -1.36425,-0.41547 z"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.7px;font-family:'Apple Braille';-inkscape-font-specification:'Apple Braille';fill:#000000"
+         id="path38" />
+      <path
+         d="m 326.77832,218.81411 h 1.34565 l 2.56729,3.80752 2.54868,-3.80752 h 1.34565 l -3.27421,4.84932 v 4.40903 h -1.25884 v -4.40903 z"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.7px;font-family:'Apple Braille';-inkscape-font-specification:'Apple Braille';fill:#000000"
+         id="path40" />
+    </g>
+    <rect
+       style="fill:#b3b3b3;fill-opacity:1;stroke-width:0.433107"
+       id="rect896"
+       width="54.513168"
+       height="34.91293"
+       x="-288.95724"
+       y="-227.77357"
+       rx="4.91084"
+       ry="4.91084"
+       transform="scale(-1)" />
+    <circle
+       style="fill:#001204;fill-opacity:1;stroke-width:0.433107"
+       id="path898"
+       cx="-266.14142"
+       cy="-210.16399"
+       transform="scale(-1)"
+       r="14.240799" />
+    <ellipse
+       style="fill:url(#linearGradient939);fill-opacity:1;stroke-width:0.427882"
+       id="path900"
+       cx="-266.14142"
+       cy="-210.16399"
+       rx="12.404902"
+       ry="12.556181"
+       transform="scale(-1)" />
+    <rect
+       style="fill:#b3b3b3;fill-opacity:0.939271;stroke-width:0.433107"
+       id="rect945"
+       width="26.644075"
+       height="10.412626"
+       x="-274.25711"
+       y="-194.69818"
+       rx="4.91084"
+       ry="4.91084"
+       transform="scale(-1)" />
+  </g>
+</svg>

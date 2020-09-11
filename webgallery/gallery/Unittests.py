@@ -21,5 +21,3 @@ class UTestCase(TestCase):
 
         response = home(request)
         self.assertEqual(response.status_code, 200)
-
-

@@ -1,46 +1,36 @@
-<header id="header-bg">
+{% load static %}
 
-</header>
-<section id="navigation">
-    <div class="content">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'gallery:gallery' %}">Main page</a>
-
-                    </li>
-
-                    {% if user.is_authenticated %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'gallery:logout' %}">Logout</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'gallery:home' %}">Home</a>
-                        </li>
-                        
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'gallery:add_img' %}">Add</a>
-                        </li>
-                        <li class="nav-item right">
-                            <a class="nav-link" href="{% url 'gallery:profile' %}">{{ user.username }}</a>
-                        </li>
-                        
-                    {% else %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'gallery:login' %}">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'gallery:register' %}">Register</a>
-                        </li>
-                    {% endif %}
-
-                </ul>
+{% if user.is_authenticated %}
+    <nav class="navbar navbar-light bg-light d-block d-md-flex navbar-expand">
+        <a class="navbar-brand" href="#">
+            <img src="{% static 'images/logo.png' %}">
+        </a>
+        <form class="form-inline my-2 ml-auto">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="search btn btn-outline-success mt-2 my-sm-0 mr-2" type="submit">Search</button>
+        </form>
+        <div class="dropdown">
+            <button class="btn dropdown-toggle text-dark" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="material-icons md-36 align-middle">person</i></button>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="{% url 'gallery:logout' %}">Logout <i class="material-icons md-18 align-middle text-danger">exit_to_app</i></a>
             </div>
-        </nav>
+        </div>
+    </nav>
+    <div class="toolbar bg-dark sticky-top">
+        <div class="container-fluid">
+            <a href="{% url 'gallery:home' %}" class="float-left"><i class="material-icons md-light md-inactive md-36">list</i></a>
+            <a href="#" class="float-left"><i class="material-icons md-light md-36">view_module</i></a>
+            <a href="#" class="float-left"><i class="material-icons md-light md-inactive md-36">view_stream</i></a>
+            <a href="{% url 'gallery:add_img' %}"><i class="image-upload float-right material-icons md-light md-inactive md-36"></i></a>
+            <a href="#" class="float-right"><i class="material-icons md-light md-inactive md-36">fullscreen</i></a>
+        </div>
     </div>
-</section>
+
+{% else %}
+    <nav class="navbar navbar-light bg-light d-block d-md-flex navbar-expand justify-content-center">
+        <a class="navbar-brand-large" href="#">
+            <img src="{% static 'images/logo.png' %}">
+        </a>
+    </nav>
+    <div class="divider"></div>
+{% endif %}

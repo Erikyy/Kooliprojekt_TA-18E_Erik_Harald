@@ -14,7 +14,7 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-MEDIA_DIR = BASE_DIR / 'gallery/static/images/media'
+MEDIA_DIR = 'media'
 STATIC_DIR = BASE_DIR / 'gallery/static/'
 
 # Quick-start development settings - unsuitable for production

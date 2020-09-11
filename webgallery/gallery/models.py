@@ -30,9 +30,3 @@ class UserProfile(models.Model):
     post = models.ManyToManyField(Post)
     def __str__(self):
         return self.user.username
-
-    
-    
-
-
-    
