@@ -1,12 +1,18 @@
-from django.shortcuts import render
-from gallery.forms import UserForm, UserProfileForm, UserPostForm
+from django.shortcuts import render, redirect
+from gallery.forms import (
+UserForm,
+UserProfileForm,
+UserPostForm,
+EditProfileForm,
+
+)
 from gallery.models import Post, UserProfile
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
-
+from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm
 
 def gallery(request):
     if User.is_authenticated:
@@ -23,11 +29,43 @@ def home(request):
     context = {'page_title': 'Home', 'querysets': queryset}
     return render(request, 'pages/home.html', context)
 
+@login_required
 def profile(request):
     context = {'page_title':'Profile'}
     return render(request, 'pages/profile.html', context)
-    
-    
+
+@login_required
+def edit_profile(request):
+    if request.method =='POST':
+        edit_form = EditProfileForm(request.POST, instance = request.user)
+
+        if edit_form.is_valid():
+            edit_form.save()
+            return redirect('/profile')
+
+    else:
+        edit_form = EditProfileForm(instance = request.user)
+        context = {'edit_form': edit_form}
+        return render(request, 'pages/edit_profile.html', context)
+
+@login_required
+def change_password(request):
+    if request.method =='POST':
+        pass_form = PasswordChangeForm(request.POST, user = request.user)
+
+        if pass_form.is_valid():
+            pass_form.save()
+            return redirect('/profile')
+
+    else:
+        pass_form = PasswordChangeForm(user = request.user)
+        context = {'pass_form': pass_form}
+        return render(request, 'pages/change_password.html', context)
+
+
+
+
+
 @login_required
 def delete_post(request, post_id=None):
     private = Post.objects.private_posts(user=request.user)

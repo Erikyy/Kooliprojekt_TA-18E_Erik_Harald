@@ -1,6 +1,7 @@
 from django import forms
 from gallery.models import UserProfile, Post
 from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserChangeForm
 
 
 class UserForm(forms.ModelForm):
@@ -36,3 +37,14 @@ class UserPostForm(forms.ModelForm):
         model = Post
 
         fields = ('title', 'post_img')
+
+class EditProfileForm(UserChangeForm):
+
+    class Meta:
+        model = User
+        fields = (
+        'email',
+        'first_name',
+        'username',
+        'password'
+        )

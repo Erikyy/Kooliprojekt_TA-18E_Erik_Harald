@@ -1,0 +1,20 @@
+{% extends 'base.html'%}
+{% block content %}
+{% if user.is_authenticated %}
+
+<div class="container">
+  <form method="post">
+      {% csrf_token %}
+      {{ edit_form.as_p}}
+      <input type="submit" name="" value="Change">
+  </form>
+</div>
+
+
+
+
+{% else %}
+    <p>Please <a href="{% url 'gallery:login' %}">login</a> first</p>
+
+{% endif %}
+{% endblock %}
