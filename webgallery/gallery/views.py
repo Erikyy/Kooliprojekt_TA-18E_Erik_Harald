@@ -46,6 +46,7 @@ def createpost(request):
             obj = post_form.save(commit=False)
             obj.user = request.user
             obj.save()
+            return HttpResponseRedirect(reverse('gallery:home'))
     else:
         post_form = UserPostForm()
     context = {'page_title': 'Add image', 'post_form': post_form}
