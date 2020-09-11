@@ -7,3 +7,7 @@
     height: auto;
     object-fit: contain;
 }
+.detail-img{
+    width: 75%;
+    height: auto;
+}
