@@ -13,6 +13,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm
+from django.contrib.auth import update_session_auth_hash
 
 def gallery(request):
     if User.is_authenticated:
@@ -45,22 +46,23 @@ def edit_profile(request):
 
     else:
         edit_form = EditProfileForm(instance = request.user)
-        context = {'edit_form': edit_form}
-        return render(request, 'pages/edit_profile.html', context)
+    context = {'edit_form': edit_form}
+    return render(request, 'pages/edit_profile.html', context)
 
 @login_required
 def change_password(request):
     if request.method =='POST':
-        pass_form = PasswordChangeForm(request.POST, user = request.user)
+        pass_form = PasswordChangeForm(data=request.POST, user = request.user)
 
         if pass_form.is_valid():
             pass_form.save()
+            update_session_auth_hash(request, pass_form.user)
             return redirect('/profile')
 
     else:
         pass_form = PasswordChangeForm(user = request.user)
-        context = {'pass_form': pass_form}
-        return render(request, 'pages/change_password.html', context)
+    context = {'pass_form': pass_form}
+    return render(request, 'pages/change_password.html', context)
 
 
 
