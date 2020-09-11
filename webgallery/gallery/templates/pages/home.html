@@ -9,7 +9,7 @@
             <div class="card card-aa">
                 <div class="card-body">
                     <h3>{{ queryset.title }}</h3>
-                    <a href="{% url 'gallery:detail' %}"><img class="g-img" src="{{ queryset.post_img.url }}" alt=""></a>
+                    <a href="{% url 'gallery:detail' queryset.id %}"><img class="g-img" src="{{ queryset.post_img.url }}" alt=""></a>
                 </div>
             </div>
             </div>
