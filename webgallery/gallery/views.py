@@ -20,6 +20,12 @@ def home(request):
     
     context = {'page_title': 'Home', 'querysets': queryset}
     return render(request, 'pages/home.html', context)
+
+def profile(request):
+    context = {'oage_title':'Profile'}
+    return render(request, 'pages/profile.html', context)
+    
+    
 @login_required
 def delete_post(request, post_id=None):
     private = Post.objects.private_posts(user=request.user)

@@ -1,6 +1,7 @@
 .card-aa{
-    width: 100%;
-    height: auto;
+    
+    align-content: center;
+    display: flex;
 }
 .g-img{
     width: 500px;
@@ -11,3 +12,7 @@
     width: 75%;
     height: auto;
 }
+.btn-left{
+    position: left;
+}
+

@@ -1,11 +1,11 @@
 {% extends 'base.html'%}
 {% block content %}
 {% if user.is_authenticated %}
-<div class="container">
+<div class="content">
     <div class="row">
         
             {% for queryset in querysets %}
-            <div class="col-sm-6">
+            <div class="col-a col-sm-4">
             <div class="card card-aa">
                 <div class="card-body">
                     <h3>{{ queryset.title }}</h3>
@@ -17,23 +17,8 @@
         
     </div>
 </div>
-    <h1>User main page</h1>
-    <p>{{ user.username }}</p>
-    <img src="{{ request.user.userprofile.profile_pic.url }}" alt="">
     
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
 
 
 
