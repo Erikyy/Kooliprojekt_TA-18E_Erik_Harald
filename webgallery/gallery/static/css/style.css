@@ -1,0 +1,9 @@
+.card-aa{
+    width: 100%;
+    height: auto;
+}
+.g-img{
+    width: 500px;
+    height: auto;
+    object-fit: contain;
+}

@@ -28,7 +28,11 @@ def removepost(request):
 
 @login_required
 def detail(request):
-    pass
+    private = Post.objects.private_posts(user=request.user)
+    queryset = private.all()
+
+    context = {'page_title':'test', 'queryset': queryset}
+    return render(request, 'pages/detail.html', context)
 
 
 @login_required

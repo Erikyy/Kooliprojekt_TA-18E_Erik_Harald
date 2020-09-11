@@ -1,15 +1,42 @@
 {% extends 'base.html'%}
 {% block content %}
 {% if user.is_authenticated %}
-
+<div class="container">
+    <div class="row">
+        
+            {% for queryset in querysets %}
+            <div class="col-sm-6">
+            <div class="card card-aa">
+                <div class="card-body">
+                    <h3>{{ queryset.title }}</h3>
+                    <a href="{% url 'gallery:detail' %}"><img class="g-img" src="{{ queryset.post_img.url }}" alt=""></a>
+                </div>
+            </div>
+            </div>
+             {% endfor %}
+        
+    </div>
+</div>
     <h1>User main page</h1>
     <p>{{ user.username }}</p>
     <img src="{{ request.user.userprofile.profile_pic.url }}" alt="">
-    {% for queryset in querysets %}
+    
 
-        <h3>{{ queryset.title }}</h3>
-        <img src="{{ queryset.post_img.url }}" alt="">
-    {% endfor %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 {% else %}
     <p>Please <a href="{% url 'gallery:login' %}">login</a> first</p>
     
