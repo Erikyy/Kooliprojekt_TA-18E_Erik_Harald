@@ -17,7 +17,7 @@ class UTestCase(TestCase):
         response = self.client.get('192.168.0.0:9000')
         self.assertEqual(response.status_code, 404)
 
-    def test_post_has_title(self):
+    def test_home(self):
         request = self.factory.get('/testing/details')
         request.user = self.user
 
