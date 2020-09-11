@@ -3,6 +3,7 @@ from gallery.models import Post, PostManager, UserProfile
 from django.contrib.auth.models import AnonymousUser, User
 from gallery.views import home
 
+
 class UTestCase(TestCase):
     def setUp(self):
         self.factory = RequestFactory()
@@ -25,4 +26,3 @@ class UTestCase(TestCase):
         self.assertEqual(response.status_code, 200)
 
 
-    
