@@ -26,7 +26,7 @@ class Post(models.Model):
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     profile_pic = models.ImageField(
-        upload_to=prof_dir, blank=True, default='static/camera.jpg')
+        upload_to=prof_dir, default='default.jpg')
     post = models.ManyToManyField(Post)
 
     def __str__(self):
