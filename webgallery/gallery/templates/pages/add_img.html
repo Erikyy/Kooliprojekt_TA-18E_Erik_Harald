@@ -6,7 +6,7 @@
         <div class="col-md-7">
             <div class="shadow p-3 mb-5 bg-white rounded" style="margin-top: 6rem">
                 <h1>Add post</h1>
-                
+
                 <form method="POST" action="{% url 'gallery:add_img' %}" enctype="multipart/form-data">
                     {% csrf_token %}
                     {{ post_form.as_p }}

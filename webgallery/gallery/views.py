@@ -20,7 +20,7 @@ def gallery(request):
     if User.is_authenticated:
         template = 'pages/login.html'
     else:
-        template = 'pages/main.html'
+        redirect('gallery:login')
     context = {'page_title': 'WebGallery'}
     return render(request, template, context)
 
@@ -63,7 +63,7 @@ def change_password(request):
     else:
         pass_form = PasswordChangeForm(user=request.user)
     context = {'pass_form': pass_form}
-    return render(request, 'pages/change_password.html', context)
+    return render(request, 'pages/edit_profile.html', context)
 
 
 @login_required

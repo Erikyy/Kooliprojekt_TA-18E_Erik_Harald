@@ -8,7 +8,7 @@
 
 <a class="btn btn-primary btn-left" href="{% url 'gallery:delete' queryset.id%}">Delete</a>
 {% else %}
-    <p>Please <a href="{% url 'gallery:login' %}">login</a> first</p>
+<p>Please <a href="{% url 'gallery:login' %}">login</a> first</p>
 
 {% endif %}
 {% endblock %}

@@ -8,7 +8,7 @@
 <img src="{{ request.user.userprofile.profile_pic.url }}" alt="">
 <a href="{% url 'gallery:edit_profile' %}">Edit</a>
 {% else %}
-    <p>Please <a href="{% url 'gallery:login' %}">login</a> first</p>
+<p>Please <a href="{% url 'gallery:login' %}">login</a> first</p>
 
 {% endif %}
 {% endblock %}
