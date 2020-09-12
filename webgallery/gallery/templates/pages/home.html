@@ -1,5 +1,7 @@
 {% extends 'base.html'%}
+
 {% block content %}
+
 {% if user.is_authenticated %}
 <div class="justified-gallery">
     {% for queryset in querysets %}
@@ -8,8 +10,9 @@
     </a>
     {% endfor %}
 </div>
+
 {% else %}
 <p>Please <a href="{% url 'gallery:login' %}">login</a> first</p>
-
 {% endif %}
+
 {% endblock %}

@@ -1,14 +1,14 @@
 {% extends 'base.html'%}
+
 {% block content %}
+
 {% if user.is_authenticated %}
-
-
 <h1>{{ queryset.title }}</h1>
 <img class="detail-img" src="{{ queryset.post_img.url }}" alt="">
-
 <a class="btn btn-primary btn-left" href="{% url 'gallery:delete' queryset.id%}">Delete</a>
+
 {% else %}
 <p>Please <a href="{% url 'gallery:login' %}">login</a> first</p>
-
 {% endif %}
+
 {% endblock %}

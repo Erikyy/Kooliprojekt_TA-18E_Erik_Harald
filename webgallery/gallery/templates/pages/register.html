@@ -5,6 +5,7 @@
 {% if registered %}
 <h2>Thank you for registering!</h2>
 <a href="{% url 'gallery:login' %}">Log in to your account</a>
+
 {% else %}
 <h2>Register</h2>
 <form method="POST" action="" enctype="multipart/form-data">
