@@ -89,6 +89,8 @@ def createpost(request):
 
 
 def user_login(request):
+    if request.user.is_authenticated:
+        return redirect('gallery:home')
     context = {'page_title': 'Login'}
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -108,6 +110,8 @@ def user_login(request):
 
 
 def register(request):
+    if request.user.is_authenticated:
+        return redirect('gallery:home')
     registered = False
     if request.method == 'POST':
         user_form = UserForm(data=request.POST)
