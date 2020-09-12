@@ -25,12 +25,6 @@ def home(request):
 
 
 @login_required
-def profile(request):
-    context = {'page_title': 'Profile'}
-    return render(request, 'pages/profile.html', context)
-
-
-@login_required
 def edit_profile(request):
     if request.method == 'POST':
         edit_form = EditProfileForm(request.POST, instance=request.user)
@@ -56,7 +50,7 @@ def change_password(request):
     else:
         pass_form = PasswordChangeForm(user=request.user)
     context = {'pass_form': pass_form}
-    return render(request, 'pages/edit_profile.html', context)
+    return render(request, 'pages/edit_password.html', context)
 
 
 @login_required

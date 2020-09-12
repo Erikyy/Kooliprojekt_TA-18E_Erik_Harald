@@ -114,3 +114,8 @@ hr {
     height: 45px;
     width: 45px;
 }
+
+.profile-img-large {
+    height: 130px;
+    width: 130px;
+}
