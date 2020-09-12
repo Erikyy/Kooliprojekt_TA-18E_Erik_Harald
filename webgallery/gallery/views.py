@@ -34,12 +34,14 @@ def profile(request):
 def edit_profile(request):
     if request.method == 'POST':
         edit_form = EditProfileForm(request.POST, instance=request.user)
+        profile_form = UserProfileForm(request.POST, instance=request.user)
         if edit_form.is_valid():
             edit_form.save()
             return redirect('/profile')
     else:
         edit_form = EditProfileForm(instance=request.user)
-    context = {'edit_form': edit_form}
+        profile_form = UserProfileForm(request.POST)
+    context = {'edit_form': edit_form, 'profile_form': profile_form}
     return render(request, 'pages/edit_profile.html', context)
 
 
