@@ -9,20 +9,11 @@ from gallery.forms import (
 from gallery.models import Post, UserProfile
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
-
-
-def gallery(request):
-    if User.is_authenticated:
-        template = 'pages/login.html'
-    else:
-        redirect('gallery:login')
-    context = {'page_title': 'WebGallery'}
-    return render(request, template, context)
 
 
 @login_required
@@ -71,7 +62,7 @@ def delete_post(request, post_id=None):
     private = Post.objects.private_posts(user=request.user)
     queryset = private.get(id=post_id)
     queryset.delete()
-    return HttpResponseRedirect(reverse('gallery:home'))
+    return redirect('gallery:home')
 
 
 @login_required
@@ -90,7 +81,7 @@ def createpost(request):
             obj = post_form.save(commit=False)
             obj.user = request.user
             obj.save()
-            return HttpResponseRedirect(reverse('gallery:home'))
+            return redirect('gallery:home')
     else:
         post_form = UserPostForm()
     context = {'page_title': 'Add image', 'post_form': post_form}
@@ -107,7 +98,7 @@ def user_login(request):
             if user.is_active:
                 login(request, user)
                 # Here redirect to user page with home.html
-                return HttpResponseRedirect(reverse('gallery:home'))
+                return redirect('gallery:home')
             else:
                 return HttpResponse("Your account was inactive")
         else:
@@ -148,4 +139,4 @@ def register(request):
 @login_required
 def user_logout(request):
     logout(request)
-    return HttpResponseRedirect(reverse('gallery:gallery'))
+    return redirect('gallery:login')

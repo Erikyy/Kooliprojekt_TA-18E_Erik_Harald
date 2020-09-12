@@ -124,3 +124,4 @@ STATIC_URL = '/static/'
 STATIC_ROOT = STATIC_DIR
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
+LOGIN_URL = '/login/'

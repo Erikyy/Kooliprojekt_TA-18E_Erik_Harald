@@ -1,22 +1,13 @@
 {% extends 'base.html'%}
 {% block content %}
 {% if user.is_authenticated %}
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-lg-2 background"></div>
-        <main class="col-lg-8 images">
-            <div class="justified-gallery">
-                {% for queryset in querysets %}
-                <a href="{{ queryset.post_img.url }}">
-                    <img src="{{ queryset.post_img.url }}">
-                </a>
-                {% endfor %}
-            </div>
-        </main>
-        <div class="col-lg-2 background"></div>
-    </div>
+<div class="justified-gallery">
+    {% for queryset in querysets %}
+    <a href="{{ queryset.post_img.url }}">
+        <img src="{{ queryset.post_img.url }}">
+    </a>
+    {% endfor %}
 </div>
-
 {% else %}
 <p>Please <a href="{% url 'gallery:login' %}">login</a> first</p>
 
