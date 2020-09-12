@@ -7,16 +7,11 @@
 <div class="row">
     <div class="col"></div>
     <div class="col-sm-6">
-        <div class="row">
-            <div class="large offset-6 mb-3">
-                <img class="profile-img profile-img-large" src="{{ request.user.userprofile.profile_pic.url }}" alt="">
-            </div>
-        </div>
-        <form method="post">
+        <img class="profile-img profile-img-large mb-3" src="{{ request.user.userprofile.profile_pic.url }}" alt="">
+        <form method="post" action="" enctype="multipart/form-data">
             {% csrf_token %}
             {{ profile_form.as_p }}
             {{ edit_form.as_p }}
-            {{ pass_form.as_p }}
             <input type="submit" name="" value="Change">
         </form>
     </div>
