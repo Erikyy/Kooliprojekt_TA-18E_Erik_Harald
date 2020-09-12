@@ -13,7 +13,6 @@ urlpatterns = [
     path('add_img/', views.createpost, name="add_img"),
     path('<int:post_id>/', views.detail, name="detail"),
     path('delete/<int:post_id>/', views.delete_post, name='delete'),
-    path('profile/', views.profile, name="profile"),
     path('edit_profile/', views.edit_profile, name="edit_profile"),
     path('password/', views.change_password, name="change_password"),
 
