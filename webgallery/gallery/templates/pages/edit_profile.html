@@ -3,15 +3,7 @@
 {% block content %}
 
 {% if user.is_authenticated %}
-<<<<<<< HEAD
-<div class="container">
-  <form method="post">
-    {% csrf_token %}
-    {{ edit_form.as_p }}
-    {{ pass_form.as_p }}
-    <input type="submit" name="" value="Change">
-  </form>
-=======
+
 <div class="row">
     <div class="col"></div>
     <div class="col-sm-6">
@@ -22,12 +14,14 @@
         </div>
         <form method="post">
             {% csrf_token %}
+            {{ profile_form.as_p }}
             {{ edit_form.as_p }}
+            {{ pass_form.as_p }}
             <input type="submit" name="" value="Change">
         </form>
     </div>
     <div class="col"></div>
->>>>>>> d8c3ca559d5b3a5cfbbe32d0af370e47fc686153
+
 </div>
 
 {% else %}
