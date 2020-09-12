@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row d-flex justify-content-center my-4">
+        <div class="col-md-7">
+            <div class="shadow p-3 mb-5 bg-white rounded" style="margin-top: 6rem">
+                {% block card_content %}{% endblock %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

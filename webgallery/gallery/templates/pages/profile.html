@@ -1,14 +1,15 @@
 {% extends 'base.html'%}
 {% block content %}
 {% if user.is_authenticated %}
-<p>Username: {{ user.username }}</p>
-<p>Email: {{ user.email }}</p>
-<p>First name: {{ user.first_name }}</p>
+<div class="container">
+    <p>Username: {{ user.username }}</p>
+    <p>Email: {{ user.email }}</p>
+    <p>First name: {{ user.first_name }}</p>
 
-<img src="{{ request.user.userprofile.profile_pic.url }}" alt="">
-<a href="{% url 'gallery:edit_profile' %}">Edit</a>
-{% else %}
-<p>Please <a href="{% url 'gallery:login' %}">login</a> first</p>
-
+    <img src="{{ request.user.userprofile.profile_pic.url }}" alt="">
+    <a href="{% url 'gallery:edit_profile' %}">Edit</a>
+    {% else %}
+    <p>Please <a href="{% url 'gallery:login' %}">login</a> first</p>
+</div>
 {% endif %}
 {% endblock %}
