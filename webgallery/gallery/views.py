@@ -32,7 +32,7 @@ def edit_profile(request):
         if edit_form.is_valid() and profile_form.is_valid():
             edit_form.save()
             profile_form.save()
-            return redirect('/profile')
+            return redirect('/edit_profile')
     else:
         edit_form = EditProfileForm(instance=request.user)
         profile_form = UserProfileForm(request.POST)
