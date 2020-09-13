@@ -7,7 +7,7 @@
 
 <form method="POST" action="{% url 'gallery:login' %}">
     {% csrf_token %}
-    {{ login_form }}
+    {{ login_form|crispy }}
     <input type="submit" name="" value="Log in">
     <br>
 

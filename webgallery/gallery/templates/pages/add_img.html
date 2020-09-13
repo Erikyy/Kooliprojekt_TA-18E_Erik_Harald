@@ -1,4 +1,5 @@
 {% extends 'card.html' %}
+{% load crispy_forms_tags %}
 
 {% block card_content %}
 
@@ -6,7 +7,7 @@
 
 <form method="POST" action="{% url 'gallery:add_img' %}" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ post_form.as_p }}
+    {{ post_form|crispy }}
     <input type="submit" name="" value="Post">
 </form>
 
