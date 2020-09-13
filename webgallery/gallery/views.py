@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from gallery.forms import (
     UserForm,
+    UserLoginForm,
     UserProfileForm,
     UserPostForm,
     EditProfileForm,
@@ -12,7 +13,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm
+from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm, UserCreationForm
 from django.contrib.auth import update_session_auth_hash
 
 
@@ -89,7 +90,6 @@ def createpost(request):
 def user_login(request):
     if request.user.is_authenticated:
         return redirect('gallery:home')
-    context = {'page_title': 'Login'}
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -104,6 +104,8 @@ def user_login(request):
         else:
             return HttpResponse("Invalid login credentials")
     else:
+        login_form = UserLoginForm()
+        context = {'page_title': 'Login', 'login_form': login_form}
         return render(request, 'pages/login.html', context)
 
 
@@ -112,20 +114,14 @@ def register(request):
         return redirect('gallery:home')
     registered = False
     if request.method == 'POST':
-        user_form = UserForm(data=request.POST)
-        profile_form = UserProfileForm(data=request.POST)
+        user_form = UserForm(request.POST)
+        profile_form = UserProfileForm(request.POST, request.FILES)
         if user_form.is_valid() and profile_form.is_valid():
             user = user_form.save()
-            user.set_password(user.password)
-            user.save()
             profile = profile_form.save(commit=False)
             profile.user = user
-            if 'profile_pic' in request.FILES:
-                profile.profile_pic = request.FILES['profile_pic']
             profile.save()
             registered = True
-        else:
-            print(user_form.errors, profile_form.errors)
     else:
         user_form = UserForm()
         profile_form = UserProfileForm()
