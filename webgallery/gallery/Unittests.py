@@ -10,6 +10,7 @@ class UTestCase(TestCase):
         self.user = User.objects.create_user(
             username='Test1', email='test@test.com', password='top_secret'
         )
+
     def test_index_loads_properly(self):
         response = self.client.get('http://127.0.0.1:8000')
         print(response)
