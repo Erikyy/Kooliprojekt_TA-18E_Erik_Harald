@@ -16,7 +16,6 @@ class Post(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     post_img = models.FileField(upload_to=prof_dir)
     title = models.CharField(max_length=50)
-
     objects = PostManager()
 
     def __str__(self):
@@ -27,7 +26,6 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     profile_pic = models.ImageField(
         upload_to=prof_dir, default='default.jpg')
-    post = models.ManyToManyField(Post)
 
     def __str__(self):
         return self.user.username
