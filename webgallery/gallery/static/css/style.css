@@ -119,3 +119,21 @@ hr {
     height: 130px;
     width: 130px;
 }
+
+h2 {
+    margin-bottom: 1rem;
+}
+
+ul {
+    margin-bottom: 0;
+}
+
+.detail-img {
+    width: 600px;
+    height: auto;
+    display: inline-block;
+}
+
+.img-title {
+    margin-bottom: 2rem;
+}

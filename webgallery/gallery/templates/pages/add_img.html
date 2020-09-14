@@ -3,12 +3,11 @@
 
 {% block card_content %}
 
-<h1>Add post</h1>
-
+<h1>Upload image</h1>
 <form method="POST" action="{% url 'gallery:add_img' %}" enctype="multipart/form-data">
     {% csrf_token %}
     {{ post_form|crispy }}
-    <input type="submit" name="" value="Post">
+    <input type="submit" name="" value="Save">
 </form>
 
 {% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="table-responsive">
+    <table class="table table-sm table-borderless text-center">
+        <thead>
+            <tr>
+                <th class="pr-5">Thumbnail</th>
+                <th class="pr-5">File name</th>
+                <th class="pr-5">Date uploaded</th>
+                <th class="pr-5">Type</th>
+                <th class="pr-5">Size</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for image in queryset %}
+            <tr>
+                <td class="pr-5">
+                    <a href="{% url 'gallery:detail' post_id=image.id %}" >
+                        <img class="img-fluid" src="{{ image.post_img.url }}" alt="">
+                    </a>
+                </td>
+                <td class="pr-5"><a href="{% url 'gallery:detail' post_id=image.id %}">{{ image.file_name }}</a></td>
+                <td class="pr-5">{{ image.create_time }} UTC</td>
+                <td class="pr-5">{{ image.file_extension }}</td>
+                <td class="pr-5">{{ image.file_size }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

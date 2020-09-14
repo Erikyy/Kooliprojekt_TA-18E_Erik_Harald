@@ -5,7 +5,7 @@ from gallery.forms import (
     UserProfileForm,
     UserPostForm,
     EditProfileForm,
-
+    EditPostForm,
 )
 from gallery.models import Post, UserProfile
 from django.contrib.auth.models import User
@@ -15,14 +15,42 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm, UserCreationForm
 from django.contrib.auth import update_session_auth_hash
+from django.db.models import Q
+
+
+def get_post(user, id):
+    return Post.objects.filter(user=user).get(id=id)
+
+
+def get_all_posts(user):
+    return Post.objects.filter(user=user).all()
 
 
 @login_required
 def home(request):
-    private = Post.objects.private_posts(user=request.user)
-    queryset = private.all()
-    context = {'page_title': 'Home', 'querysets': queryset}
-    return render(request, 'pages/home.html', context)
+    queryset = get_all_posts(request.user)
+    context = {'page_title': 'Your photos', 'queryset': queryset}
+    return render(request, 'pages/images.html', context)
+
+
+@login_required
+def gallery(request):
+    queryset = get_all_posts(request.user)
+    context = {'page_title': 'Gallery', 'queryset': queryset}
+    return render(request, 'pages/gallery.html', context)
+
+@login_required
+def gallery_column(request):
+    queryset = get_all_posts(request.user)
+    context = {'page_title': 'Gallery', 'queryset': queryset}
+    return render(request, 'pages/gallery_column.html', context)
+
+
+@login_required
+def gallery_full(request):
+    queryset = get_all_posts(request.user)
+    context = {'page_title': 'Full screen', 'queryset': queryset}
+    return render(request, 'pages/gallery_full.html', context)
 
 
 @login_required
@@ -30,7 +58,8 @@ def edit_profile(request):
     if request.method == 'POST':
         edit_form = EditProfileForm(request.POST, instance=request.user)
         profile = request.user.userprofile
-        profile_form = UserProfileForm(request.POST, request.FILES, instance=profile)
+        profile_form = UserProfileForm(
+            request.POST, request.FILES, instance=profile)
         if edit_form.is_valid() and profile_form.is_valid():
             edit_form.save()
             profile_form.save()
@@ -58,17 +87,27 @@ def change_password(request):
 
 @login_required
 def delete_post(request, post_id=None):
-    private = Post.objects.private_posts(user=request.user)
-    queryset = private.get(id=post_id)
-    queryset.delete()
+    obj = get_post(request.user, post_id)
+    obj.delete()
     return redirect('gallery:home')
 
 
 @login_required
+def edit_post(request, post_id=None):
+    obj = get_post(request.user, post_id)
+    form = EditPostForm(request.POST or None, instance=obj)
+    if form.is_valid():
+        form.save()
+        return redirect('gallery:detail', post_id=post_id)
+    template_name = 'pages/edit_post.html'
+    context = {'page_title': 'Edit post', 'post_form': form}
+    return render(request, template_name, context)
+
+
+@login_required
 def detail(request, post_id):
-    private = Post.objects.private_posts(user=request.user)
-    queryset = private.get(pk=post_id)
-    context = {'page_title': 'test', 'queryset': queryset}
+    obj = get_post(request.user, post_id)
+    context = {'page_title': 'test', 'object': obj}
     return render(request, 'pages/detail.html', context)
 
 
@@ -85,6 +124,18 @@ def createpost(request):
         post_form = UserPostForm()
     context = {'page_title': 'Add image', 'post_form': post_form}
     return render(request, 'pages/add_img.html', context)
+
+
+@login_required
+def search(request):
+    query = request.GET.get('q')
+    if query:
+        result = Post.objects.filter(Q(title__icontains=query) | Q(post_img__icontains=query))
+        template = 'pages/images.html'
+        context = {"queryset": result}
+        return render(request, template, context)
+    return redirect('gallery:home')
+    
 
 
 def user_login(request):

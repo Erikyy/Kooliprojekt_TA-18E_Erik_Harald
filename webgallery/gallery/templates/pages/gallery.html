@@ -4,9 +4,9 @@
 
 {% if user.is_authenticated %}
 <div class="justified-gallery">
-    {% for queryset in querysets %}
-    <a href="{{ queryset.post_img.url }}">
-        <img src="{{ queryset.post_img.url }}">
+    {% for image in queryset %}
+    <a href="{{ image.post_img.url }}">
+        <img src="{{ image.post_img.url }}">
     </a>
     {% endfor %}
 </div>

@@ -9,9 +9,8 @@
     {% csrf_token %}
     {{ login_form|crispy }}
     <input type="submit" name="" value="Log in">
-    <br>
-
 </form>
+<br>
 <p>Not registered? Click <a href="{% url 'gallery:register' %}">here</a> to register.</p>
 
 {% endblock %}

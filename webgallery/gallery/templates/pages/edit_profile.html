@@ -12,7 +12,13 @@
         <form method="post" action="" enctype="multipart/form-data">
             {% csrf_token %}
             {{ profile_form|crispy }}
-            {{ edit_form|crispy }}
+            {% for field in edit_form %}
+                {% if field.name != 'password' %}
+                    {{ field|as_crispy_field }}
+                {% endif %}
+            {% endfor %}
+            {{ edit_form.password }}
+            <p>{{ edit_form.password.help_text|safe }}</p>
             <input type="submit" name="" value="Change">
         </form>
     </div>

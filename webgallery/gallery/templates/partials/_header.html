@@ -1,12 +1,15 @@
 {% load static %}
 
 {% if user.is_authenticated %}
+    {% url 'gallery:home' as home_url %}
+    {% url 'gallery:gallery' as gallery_url %}
+    {% url 'gallery:gallery_column' as gallery_column_url %}
     <nav class="navbar navbar-light bg-light d-block d-md-flex navbar-expand">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="{% url 'gallery:home' %}">
             <img src="{% static 'images/logo.png' %}">
         </a>
-        <form class="form-inline my-2 ml-auto">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <form class="form-inline my-2 ml-auto" action="{% url 'gallery:search' %}">
+            <input class="form-control mr-sm-2" type="search" name="q" placeholder="Search" aria-label="Search" value="{{ request.GET.q }}">
             <button class="search btn btn-outline-success mt-2 my-sm-0 mr-2" type="submit">Search</button>
         </form>
         <div class="dropdown">
@@ -20,17 +23,18 @@
     </nav>
     <div class="toolbar bg-dark sticky-top">
         <div class="container-fluid">
-            <a href="{% url 'gallery:home' %}" class="float-left"><i class="material-icons md-light md-inactive md-36">list</i></a>
-            <a href="#" class="float-left"><i class="material-icons md-light md-36">view_module</i></a>
-            <a href="#" class="float-left"><i class="material-icons md-light md-inactive md-36">view_stream</i></a>
-            <a href="{% url 'gallery:add_img' %}"><i class="image-upload float-right material-icons md-light md-inactive md-36"></i></a>
-            <a href="#" class="float-right"><i class="material-icons md-light md-inactive md-36">fullscreen</i></a>
+            <a href="{{ home_url }}" class="float-left"><i class="material-icons md-light{% if request.get_full_path != home_url %} md-inactive{% endif %} md-36" data-toggle="tooltip" data-placement="right" title="Images">list</i></a>
+            <a href="{{ gallery_url }}" class="float-left"><i class="material-icons md-light{% if request.get_full_path != gallery_url %} md-inactive{% endif %} md-36" data-toggle="tooltip" data-placement="right" title="Gallery view">view_module</i></a>
+            <a href="{{ gallery_column_url }}" class="float-left"><i class="material-icons md-light{% if request.get_full_path != gallery_column_url %} md-inactive{% endif %} md-36" data-toggle="tooltip" data-placement="right" title="Column view">view_stream</i></a>
+            <a href="{% url 'gallery:add_img' %}"><i class="image-upload float-right material-icons md-light md-inactive md-36" data-toggle="tooltip" data-placement="left" title="Upload">add</i></a>
+            
+            {% if request.get_full_path == gallery_url %}<a href="{% url 'gallery:gallery_full' %}" class="float-right"><i class="material-icons md-light md-inactive md-36" data-toggle="tooltip" data-placement="left" title="Full screen">fullscreen</i></a>{% endif %}
         </div>
     </div>
 
 {% else %}
-    <nav class="navbar navbar-light bg-light d-block d-md-flex navbar-expand justify-content-center">
-        <a class="navbar-brand-large" href="#">
+    <nav class="navbar navbar-light bg-light d-block d-flex navbar-expand justify-content-center">
+        <a class="navbar-brand-large" href="{% url 'gallery:home' %}">
             <img src="{% static 'images/logo.png' %}">
         </a>
     </nav>
