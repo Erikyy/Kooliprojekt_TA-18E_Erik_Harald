@@ -10,7 +10,7 @@
 </div>
 <div class="row">
     <div class="col-sm-12 text-center">
-        <img class="detail-img" src="{{ object.post_img.url }}" alt="">
+        <img class="detail-img img-fluid" src="{{ object.post_img.url }}" alt="">
     </div>
 </div>
 <div class="row mt-2">
@@ -19,7 +19,7 @@
         <a class="btn btn-outline-danger" href="{% url 'gallery:delete' object.id%}">Delete</a>
     </div>
     <div class="mt-3 col-sm-3 text-center">
-        <a class="btn btn-outline-primary" href="{% url 'gallery:delete' object.id%}">Edit</a>
+        <a class="btn btn-outline-primary" href="{% url 'gallery:edit' object.id%}">Edit</a>
     </div>
     <div class="col"></div>
 </div>
