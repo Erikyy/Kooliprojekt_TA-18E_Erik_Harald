@@ -63,7 +63,7 @@ def edit_profile(request):
         if edit_form.is_valid() and profile_form.is_valid():
             edit_form.save()
             profile_form.save()
-            return redirect('/edit_profile')
+            return redirect('gallery:edit_profile')
     else:
         edit_form = EditProfileForm(instance=request.user)
         profile_form = UserProfileForm(request.POST)
@@ -78,7 +78,7 @@ def change_password(request):
         if pass_form.is_valid():
             pass_form.save()
             update_session_auth_hash(request, pass_form.user)
-            return redirect('/profile')
+            return redirect('gallery:edit_profile')
     else:
         pass_form = PasswordChangeForm(user=request.user)
     context = {'pass_form': pass_form}
@@ -130,7 +130,7 @@ def createpost(request):
 def search(request):
     query = request.GET.get('q')
     if query:
-        result = Post.objects.filter(Q(title__icontains=query) | Q(post_img__icontains=query))
+        result = Post.objects.filter(Q(title__icontains=query) | Q(post_img__icontains=query), user=request.user)
         template = 'pages/images.html'
         context = {"queryset": result}
         return render(request, template, context)
